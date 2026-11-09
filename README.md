@@ -54,7 +54,7 @@ npx serve public
 
 ## Deploy
 
-Vercel production: xem `deploy_url.txt`.
+Vercel production: **https://binhdinh-water-quality.vercel.app** (xem `deploy_url.txt`).
 
 ```bash
 vercel --prod --yes
