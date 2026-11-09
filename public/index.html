@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="HTK">
+  <meta name="last-updated" content="2026-11-09">
+  <meta name="description" content="Chất lượng nước giếng Bình Định sau lũ 2026 — nhiễm phèn, nhiễm mặn. Tính WQI bằng C WebAssembly. HTK 0396241674.">
+  <title>Chất lượng nước giếng Bình Định sau lũ 2026 — WQI | HTK</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="index.html">💧 Nước giếng Bình Định</a>
+    <nav>
+      <a href="index.html" class="active">Trang chủ</a>
+      <a href="about.html">Giới thiệu</a>
+      <a class="btn-hotline" href="tel:0396241674">📞 Liên hệ HTK</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Chất lượng nước giếng sau lũ 2026 — nhiễm phèn, nhiễm mặn</h1>
+      <p class="updated">Cập nhật: 09/11/2026</p>
+      <p>
+        Sau các đợt lũ sông Kôn dâng cao và bão số 9, số 10 năm 2026, hàng nghìn giếng khơi, giếng khoan
+        ở Tuy Phước, An Nhơn, Phù Cát và Quy Nhơn bị nhiễm phèn (sắt vượt chuẩn) và nhiễm mặn do nước
+        biển, nước lũ tràn vào tầng nước ngầm. Nước đục, có vị mặn, mùi tanh sắt khiến bà con thiếu nước
+        sạch sinh hoạt trầm trọng giữa mùa mưa lũ. Công cụ này tính chỉ số chất lượng nước WQI (0–100)
+        từ pH, độ mặn và hàm lượng sắt ngay trên trình duyệt bằng WebAssembly biên dịch từ ngôn ngữ C,
+        kèm khuyến cáo xử lý nước cho từng mức. Cần hỗ trợ nước sạch khẩn cấp, gọi ngay
+        <a href="tel:0396241674">HTK – 0396241674</a>.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>🧪 Tự kiểm tra nước giếng nhà bạn (tính bằng C → WASM)</h2>
+      <p class="muted">Nhập kết quả đo: pH (0–14), độ mặn (‰, phần nghìn), sắt tổng (mg/L). Chỉ số WQI được tính trực tiếp bởi module <code>wqi.wasm</code>.</p>
+      <form id="wqi-form" class="wqi-form">
+        <label>pH
+          <input type="number" id="ph" step="0.1" min="0" max="14" value="7.0" required>
+        </label>
+        <label>Độ mặn (‰)
+          <input type="number" id="salinity" step="0.1" min="0" max="40" value="0.2" required>
+        </label>
+        <label>Sắt tổng (mg/L)
+          <input type="number" id="iron" step="0.1" min="0" max="20" value="0.2" required>
+        </label>
+        <button type="submit" id="btn-calc">Tính WQI</button>
+      </form>
+      <div id="result" class="result" hidden>
+        <div class="result-score">WQI: <strong id="result-wqi">—</strong>/100 <span id="result-badge" class="badge"></span></div>
+        <p id="result-advice"></p>
+      </div>
+      <p id="wasm-status" class="muted">Đang nạp module WebAssembly…</p>
+    </section>
+
+    <section class="card">
+      <h2>📋 20 điểm test giếng tại Bình Định</h2>
+      <p class="mock-label">Dữ liệu mô phỏng – cập nhật 09/11/2026</p>
+      <div class="table-wrap">
+        <table id="well-table">
+          <thead>
+            <tr>
+              <th>#</th><th>Điểm giếng</th><th>Địa phương</th>
+              <th>pH</th><th>Độ mặn (‰)</th><th>Sắt (mg/L)</th>
+              <th>WQI</th><th>Đánh giá</th>
+            </tr>
+          </thead>
+          <tbody id="well-tbody"></tbody>
+        </table>
+      </div>
+      <p class="muted">Thang đánh giá: <span class="badge badge-good">Tốt ≥ 75</span>
+        <span class="badge badge-mid">Trung bình 50–74</span>
+        <span class="badge badge-bad">Kém &lt; 50</span></p>
+    </section>
+
+    <section class="card">
+      <h2>🚰 Khuyến cáo xử lý nước sau lũ</h2>
+      <ul class="advice-list">
+        <li><strong>Nước tốt (WQI ≥ 75):</strong> có thể dùng sinh hoạt; vẫn nên đun sôi trước khi ăn uống.</li>
+        <li><strong>Trung bình (50–74):</strong> lắng phèn bằng phèn chua hoặc PAC, lọc qua bể lọc cát/than hoạt tính, khử trùng bằng Cloramin B rồi đun sôi.</li>
+        <li><strong>Kém (&lt; 50):</strong> không dùng ăn uống; nhiễm mặn cần máy lọc RO hoặc nguồn nước khác, nhiễm phèn nặng cần giàn mưa + lọc mangan. Liên hệ HTK để được hỗ trợ.</li>
+        <li>Sau lũ, thau rửa giếng khơi, bơm xả ít nhất 3 lần thể tích giếng trước khi dùng lại.</li>
+      </ul>
+      <p>Cần tư vấn xử lý nước hoặc hỗ trợ nước sạch: <a href="tel:0396241674">📞 0396241674</a> ·
+        <a href="https://zalo.me/0396241674" target="_blank" rel="noopener">Zalo HTK</a></p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 <a href="https://zalo.me/0396241674" target="_blank" rel="noopener">HTK</a> ·
+      Hotline/Zalo: <a href="tel:0396241674">0396241674</a> ·
+      Email: <a href="mailto:htk.contact@gmail.com">htk.contact@gmail.com</a></p>
+    <p class="muted">Dữ liệu mô phỏng phục vụ minh họa – cập nhật 09/11/2026 · Mùa mưa lũ Bình Định 2026</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="HTK">
+  <meta name="last-updated" content="2026-11-09">
+  <meta name="description" content="Giới thiệu dự án chất lượng nước giếng Bình Định sau lũ 2026 — HTK 0396241674.">
+  <title>Giới thiệu — Chất lượng nước giếng Bình Định | HTK</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="index.html">💧 Nước giếng Bình Định</a>
+    <nav>
+      <a href="index.html">Trang chủ</a>
+      <a href="about.html" class="active">Giới thiệu</a>
+      <a class="btn-hotline" href="tel:0396241674">📞 Liên hệ HTK</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card">
+      <h1>Giới thiệu dự án</h1>
+      <p class="updated">Cập nhật: 09/11/2026</p>
+      <p>
+        Tháng 11/2026, Bình Định đang chịu lũ sông Kôn dâng cao nhấn chìm Tuy Phước, An Nhơn;
+        bão số 9 và số 10 đổ bộ Quy Nhơn – Phù Cát – Hoài Nhơn; sạt lở vùng núi An Lão, Vĩnh Thạnh,
+        Tây Sơn; ngập úng đô thị Quy Nhơn và xói lở bờ biển Nhơn Lý, Cát Tiến, Mỹ Thành.
+        Sau lũ, nước giếng bị nhiễm phèn (sắt, pH thấp) và nhiễm mặn (độ mặn tăng cao),
+        đe dọa trực tiếp sức khỏe người dân.
+      </p>
+      <p>
+        Dự án <strong>binhdinh-water-quality</strong> giúp bà con tự đánh giá chất lượng nước giếng:
+        chỉ số WQI (0–100) được tính bằng hàm <code>calculate_wqi(ph, salinity, iron)</code> viết bằng
+        <strong>ngôn ngữ C thuần</strong> (không dùng thư viện chuẩn), biên dịch sang
+        <strong>WebAssembly</strong> và chạy ngay trên trình duyệt — không cần gửi dữ liệu đi đâu.
+        Trang hiển thị bảng 20 điểm test giếng mô phỏng khắp Bình Định cùng khuyến cáo xử lý nước
+        theo từng mức chất lượng.
+      </p>
+      <h2>Công thức WQI</h2>
+      <p>WQI = 100 × (0.30 × điểm pH + 0.40 × điểm độ mặn + 0.30 × điểm sắt), mỗi chỉ số thành phần
+        chuẩn hóa về 0–1: pH tối ưu 6.5–8.5; độ mặn 0‰ đạt tối đa, ≥ 4‰ bằng 0;
+        sắt 0 mg/L đạt tối đa, ≥ 2.5 mg/L bằng 0.</p>
+    </section>
+
+    <section class="card contact-block">
+      <h2>Liên hệ HTK – 0396241674</h2>
+      <p><strong>Tác giả:</strong> <a href="https://zalo.me/0396241674" target="_blank" rel="noopener">HTK</a></p>
+      <p><strong>Hotline:</strong> <a href="tel:0396241674">0396241674</a></p>
+      <p><strong>Zalo:</strong> <a href="https://zalo.me/0396241674" target="_blank" rel="noopener">https://zalo.me/0396241674</a></p>
+      <p><strong>Email:</strong> <a href="mailto:htk.contact@gmail.com">htk.contact@gmail.com</a></p>
+      <p class="updated">Cập nhật: 09/11/2026</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 <a href="https://zalo.me/0396241674" target="_blank" rel="noopener">HTK</a> ·
+      Hotline/Zalo: <a href="tel:0396241674">0396241674</a> ·
+      Email: <a href="mailto:htk.contact@gmail.com">htk.contact@gmail.com</a></p>
+    <p class="muted">Dữ liệu mô phỏng phục vụ minh họa – cập nhật 09/11/2026 · Mùa mưa lũ Bình Định 2026</p>
+  </footer>
+</body>
+</html>
